@@ -28,13 +28,15 @@ ngxOptions+=( \
 ngxOptions+=( "--with-debug" )
 
 # gzip static module enables use of gzip
-ngxOptions+=( "--with-http_gzip_static_module" )
+ngxOptions+=( \
+"--with-http_gzip_static_module" \
+"--with-zlib=$(readlink -f ~/src/zlib)" )
 
 # stub status module is recommended for getting stats
 ngxOptions+=( "--with-http_stub_status_module" )
 
 # enables to match routes via Regular Expression Matching when defining routes
-ngxOptions+=( "--with-pcre" )
+ngxOptions+=( "--with-pcre=$(readlink -f ~/src/pcre)" )
 
 # enables asynchronous I/O
 ngxOptions+=( "--with-file-aio" )
@@ -78,5 +80,4 @@ ngxOptions+=( \
 # GCC
 #----------------------------------------------------
 # sets additional parameters that will be added to the CFLAGS variable.
-ngxOptions+=( \
-'--with-cc-opt="-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic"' )
+#ngxOptions+=( '--with-cc-opt="-O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic"' )
