@@ -48,14 +48,14 @@ ngxOptions+=( "--with-http_v2_module" )
 # use openssl from source
 ngxOptions+=( \
 "--with-http_ssl_module" \
-"--with-openssl=~/src/openssl" )
+"--with-openssl=$(readlink -f ~/src/openssl)" )
 
 #----------------------------------------------------
 # MODULES
 #----------------------------------------------------
 
 # use sticky module addon
-ngxOptions+=( "--add-module=~/src/nginx-sticky-module-ng" )
+ngxOptions+=( "--add-module=$(readlink -f ~/src/nginx-sticky-module-ng/)" )
 
 #----------------------------------------------------
 # WITHOUTS
