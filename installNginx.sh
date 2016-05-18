@@ -30,5 +30,6 @@ ln -sf nginx-$nginxVersion nginx
 # symlink to openssl
 ln -sf openssl-$opensslVersion openssl
 
-
-echo ${ngxOptions[@]}
+# Preparing the nginx source
+cd nginx
+./configure ${ngxOptions[@]}
