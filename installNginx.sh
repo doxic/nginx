@@ -1,4 +1,16 @@
 #!/bin/bash
+# usage: installNginx.sh [nginxVersion] [opensslVersion] [pcreVersion] [zlibVersion]
+
+# exit the script if any statement returns a non-true return value
+set -e
+# exit the script if any uninitialised variable
+set -u
+
+# Colorcodes
+# http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
 
 # source build options
 source $(dirname $(readlink -f $0))/nginxBuildOptions.sh
@@ -13,15 +25,11 @@ cd ~/src
 #-------------------------------------------
 # Dependencies
 #-------------------------------------------
-
-nginxVersion=$1
-nginxVersion="${nginxVersion:-1.10.0}"
-opensslVersion=$2
-opensslVersion="${opensslVersion:-1.0.2h}"
-pcreVersion=$3
-pcreVersion="${pcreVersion:-8.38}"
-zlibVersion=$4
-zlibVersion="${zlibVersion:-1.2.8}"
+# check var $1, if not set use default
+nginxVersion="${1:-1.10.0}"
+opensslVersion="${2:-1.0.2h}"
+pcreVersion="${3:-8.38}"
+zlibVersion="${4:-1.2.8}"
 
 # download and unpack nginx
 [ -d nginx-$nginxVersion ] && echo "nginx-$nginxVersion found" || curl http://nginx.org/download/nginx-$nginxVersion.tar.gz | tar xvz
@@ -47,6 +55,30 @@ ln -sf pcre-$pcreVersion pcre
 # smylink to zlib
 ln -sf zlib-$zlibVersion zlib
 
+#------------------------------------------
+# Compiling
+#------------------------------------------
+
 # Preparing the nginx source
 cd nginx
-./configure ${ngxOptions[@]}
+./configure ${ngxOptions[@]} || { echo "Configure failed"; exit 1; }
+
+make || { echo "make failed"; exit 1;}
+
+#-----------------------------------------
+# Install
+#-----------------------------------------
+
+# Install compiled files
+make install || { echo "Installation failed"; exit 1; }
+
+# create system account if not existent
+id -u nginx &>/dev/null && echo "User exists" || useradd -r nginx
+
+# download init.d script and make executable
+curl -o /etc/init.d/nginx https://gist.githubusercontent.com/doxic/4917727d7f9558981646f783c9b5b043/raw/94c24d0f2d69d035e7195564961a19e38535676b/etc-init.d-nginx || { echo "init.d Script ${red}not downloaded${reset}" }
+chmod +x /etc/init.d/nginx
+
+# Add service and set runlevel
+chkconfig --add nginx
+chkconfig --level 345 nginx on

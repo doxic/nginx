@@ -64,7 +64,6 @@ ngxOptions+=( "--add-module=$(readlink -f ~/src/nginx-sticky-module-ng/)" )
 #----------------------------------------------------
 # exclude this modules
 ngxOptions+=( \
-"--without-http_rewrite_module" \
 "--without-mail_pop3_module" \
 "--without-mail_imap_module" \
 "--without-mail_smtp_module" \
@@ -75,7 +74,7 @@ ngxOptions+=( \
 "--without-http_map_module" \
 "--without-http_geo_module" \
 "--without-http_ssi_module" )
-
+#"--without-http_rewrite_module" \
 #----------------------------------------------------
 # GCC
 #----------------------------------------------------

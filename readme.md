@@ -5,6 +5,16 @@ Sources: digitalocean, samair
 
 ## Usage
 
+### Prerequisites
+
+yum-utils for yumdownloader
+    yum install yum-utils
+
+#### Example
+
+Inspect sourcecode of lsmod
+    rpm -qf /sbin/lsmod
+
 ### Dependencies
 
 Install prerequisites 
