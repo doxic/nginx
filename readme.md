@@ -18,7 +18,7 @@ Inspect sourcecode of lsmod
 ### Dependencies
 
 Install prerequisites 
-    yum -y install gcc gcc-c++ make zlib-devel pcre-devel openssl-devel git patch
+    yum -y install gcc gcc-c++ make git patch
 
 ### Install
 
