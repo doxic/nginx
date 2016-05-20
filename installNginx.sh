@@ -35,28 +35,28 @@ zlibVersion="${4:-1.2.8}"
 [ -d nginx-$nginxVersion ] && echo "nginx-$nginxVersion found" || curl http://nginx.org/download/nginx-$nginxVersion.tar.gz | tar xvz
 
 # symlink to nginx
-rm nginx
+rm -f nginx
 ln -sf nginx-$nginxVersion nginx
 
 # download and unpack openssl
 [ -d openssl-$opensslVersion ] && echo "openssl-$opensslVersion found" || curl -L --tlsv1.1 https://www.openssl.org/source/openssl-$opensslVersion.tar.gz | tar xvz
 
 # symlink to openssl
-rm openssl
+rm -f  openssl
 ln -sf openssl-$opensslVersion openssl
 
 # download and unpack pcre
 [ -d pcre-$pcreVersion ] && echo "pcre-$pcreVersion found" || curl -L https://sourceforge.net/projects/pcre/files/pcre/8.38/pcre-$pcreVersion.tar.gz/download | tar xzv
 
 # symlink to pcre
-rm pcre
+rm -f pcre
 ln -sf pcre-$pcreVersion pcre
 
 # download and upack zlib
 [ -d zlib-$zlibVersion ] && echo "zlib-$zlibVersion found" || curl -L http://zlib.net/zlib-1.2.8.tar.gz | tar xvz
 
 # smylink to zlib
-rm zlib
+rm -f zlib
 ln -sf zlib-$zlibVersion zlib
 
 
