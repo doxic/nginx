@@ -61,7 +61,7 @@ ln -sf zlib-$zlibVersion zlib
 
 
 # source build options
-source $(dirname $(readlink -f $0))/nginxBuildOptions.sh
+source $scriptPath/nginxBuildOptions.sh
 
 #------------------------------------------
 # Compiling
