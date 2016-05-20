@@ -82,3 +82,11 @@ chmod +x /etc/init.d/nginx
 # Add service and set runlevel
 chkconfig --add nginx
 chkconfig --level 345 nginx on
+
+# Cleanup
+rm -rf /etc/nginx/fastcgi*
+rm -rf /etc/nginx/scgi*
+rm -rf /etc/nginx/uwsgi*
+
+# sites folder
+mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
