@@ -12,8 +12,8 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-# source build options
-source $(dirname $(readlink -f $0))/nginxBuildOptions.sh
+# save script path
+scriptPath=(dirname $(readlink -f $0))
 
 # create src directory and cd
 mkdir -p ~/src && cd ~/src
@@ -58,6 +58,10 @@ ln -sf pcre-$pcreVersion pcre
 # smylink to zlib
 rm zlib
 ln -sf zlib-$zlibVersion zlib
+
+
+# source build options
+source $(dirname $(readlink -f $0))/nginxBuildOptions.sh
 
 #------------------------------------------
 # Compiling
