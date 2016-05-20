@@ -5,6 +5,8 @@
 set -e
 # exit the script if any uninitialised variable
 set -u
+# check for root
+[ $EUID -ne 0 ] && { echo "You must be a root user"; exit 1; }
 
 # Colorcodes
 # http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
