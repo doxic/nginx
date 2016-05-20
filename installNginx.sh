@@ -13,7 +13,7 @@ green=`tput setaf 2`
 reset=`tput sgr0`
 
 # save script path
-scriptPath=(dirname $(readlink -f $0))
+scriptPath=$(dirname $(readlink -f $0))
 
 # create src directory and cd
 mkdir -p ~/src && cd ~/src
