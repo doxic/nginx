@@ -25,10 +25,23 @@ mkdir -p ~/src && cd ~/src
 #-------------------------------------------
 
 # get nginx-sticky-module-ng
-if cd nginx-sticky-module-ng; then git pull; else git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng; fi
+
+if [ -d "nginx-sticky-module-ng" ]; then 
+    cd nginx-sticky-module-ng
+    git pull
+    cd ..
+else 
+    git clone https://github.com/pagespeed/ngx_pagespeed 
+fi
 
 # get ngx_pagespeed
-if cd ngx_pagespeed; then git pull; else git clone https://github.com/pagespeed/ngx_pagespeed; fi
+if [ -d "ngx_pagespeed" ]; then 
+    cd ngx_pagespeed
+    git pull
+    cd ..
+else 
+    git clone https://github.com/pagespeed/ngx_pagespeed 
+fi
 
 
 cd ~/src
