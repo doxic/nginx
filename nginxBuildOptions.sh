@@ -58,6 +58,8 @@ ngxOptions+=( \
 
 # use sticky module addon
 ngxOptions+=( "--add-module=$(readlink -f ~/src/nginx-sticky-module-ng/)" )
+# use ngx_pagespeed
+ngxOptions+=(" --add-module=$(readlink -f ~/src/ngx_pagespeed/)" )
 
 #----------------------------------------------------
 # WITHOUTS

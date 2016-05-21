@@ -20,8 +20,17 @@ scriptPath=$(dirname $(readlink -f $0))
 # create src directory and cd
 mkdir -p ~/src && cd ~/src
 
+#-------------------------------------------
+# External Modules
+#-------------------------------------------
+
 # get nginx-sticky-module-ng
 if cd nginx-sticky-module-ng; then git pull; else git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng; fi
+
+# get ngx_pagespeed
+if cd ngx_pagespeed; then git pull; else git clone https://github.com/pagespeed/ngx_pagespeed; fi
+
+
 cd ~/src
 
 #-------------------------------------------
