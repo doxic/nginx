@@ -118,3 +118,4 @@ chkconfig --level 345 nginx on
 # Create folder structure
 mkdir -p /etc/nginx/sites-available/ /etc/nginx/sites-enabled/
 mkdir -p /etc/nginx/conf.d/
+mkdir -p /etc/nginx/ssl/
