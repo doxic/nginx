@@ -31,7 +31,7 @@ if [ -d "nginx-sticky-module-ng" ]; then
     git pull
     cd ..
 else 
-    git clone https://github.com/pagespeed/ngx_pagespeed 
+    git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng
 fi
 
 # get ngx_pagespeed
